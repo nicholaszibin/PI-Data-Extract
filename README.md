@@ -6,7 +6,7 @@ PI Historian database into a pandas DataFrame.
 To use this function, you need to install PIConnect: 
 `pip install PIconnect`
 
-General Inputs:
+#### General Inputs:
 1. Start Date: E.g., 8/21/2020  7:30:00 [MM/DD/YYY HH:MM:SS]
 2. End Date: E.g., 8/21/2021  7:30:00 [MM/DD/YYY HH:MM:SS]
 3. Time Interval: E.g., 60s (one minute), 10m (ten minutes), 1h (one hour), 1d (one day), 1m (one month), etc.
@@ -25,24 +25,28 @@ General Inputs:
    - count
    - mean
 
-RETURNS:
-- Pandas DataFrame:
+#### Output:
+Pandas DataFrame:
 - Index: Time interval [datetime64]
 - Header: Variable name(s)
 - Columns: 
 	* 'summary' data float64
 	* 'sampled' data float64 or string depending on PI tag
                
-Example 1:
+#### Example 1:
 In this example, we will extract 10-minute hourly average data for a flow meter during the calendar year of 2019.
 `PI_Call_Tag(1/1/2019, 1/1/2020, 10m, 'P1-FIC/PV.CV', 'P1-Flow')`
 
-Example 2:
+#### Example 2:
 In this example we will calculate maximum monthly peak demand.
 `PI_Call_Tag(1/1/2019, 1/1/2020, 10m, 'P1-FIC-11-024/PV.CV', 'P1-kW-Max', summaryType='maximum')`
     
-Example 3: 
-'PI_Call_Tag(1/1/2019, 1/1/2020, 10m, 'P1-FIC-11-024/PV.CV', 'P1-kW-Max', summaryType='maximum')'
+#### Example 3: 
+`PI_Call_Tag(1/1/2019, 1/1/2020, 10m, 'P1-FIC-11-024/PV.CV', 'P1-kW-Max', summaryType='maximum')`
 
-TO DO:
--Add functionality to use multiple different summary types within a csv file
+There are two functions you can call:
+1. `PI_Call` which works with a csv file of tags.
+2. `PI_Call_Tag` which works with a list of pi tag and a list of var_names
+
+#### TO DO:
+- Combine both functions to use either csv file or list of tags.
