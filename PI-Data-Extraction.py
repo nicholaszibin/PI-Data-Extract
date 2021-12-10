@@ -11,16 +11,16 @@ To use this function, you need to install PIConnect: pip install PIconnect
 Example 1:
     Extract 10-minute hourly average data for a flow meter during the calendar 
     year of 2019.
-        PI_Call_Tag(1/1/2019, 1/1/2020, 10m, 'P1-FIC/PV.CV', 'P1-Flow')
+        PI_Call_Tag(1/1/2019, 1/1/2020, 10m, 'P1-FIC-11/PV.CV', 'P1-Flow')
 
 Example 2:
     In this example we will calculate maximum monthly peak demand.
-        PI_Call_Tag(1/1/2019, 1/1/2020, 10m, 'P1-FIC-11-024/PV.CV', 'P1-kW-Max', summaryType='maximum') 
+        PI_Call_Tag(1/1/2019, 1/1/2020, 10m, 'P1-kW-11/PV.CV', 'P1-kW-Max', summaryType='maximum') 
         The function outputs a dataframe with the variable renamed 'P1-kW-Max'.
     
 Example 3: 
     Extract data from a csv file list of tags and var_names for a pump station.
-    PI_Call('1/1/2020  7:30:00', '2/1/2021  11:47:00', '60s', 'Pump_Stn_tags.csv', dataType='summary', summaryType='average')
+    PI_Call('1/1/2020  7:30:00', '2/1/2021  11:47:00', '60s', 'sample-PI-Data-Extract.csv', dataType='summary', summaryType='average')
 
 @Author: Nicholas Zibin
 @Date: August 10, 2020
