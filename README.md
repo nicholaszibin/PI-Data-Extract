@@ -1,4 +1,4 @@
-# PI-Data-Extraction
+# PI-Data-Extract
 This function uses PIConnect (https://pypi.org/project/PIconnect/) to extract 
 'calculated' or 'sampled' data from a tag or a CSV file of tags within a OSI 
 PI Historian database into a pandas DataFrame.
