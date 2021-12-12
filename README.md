@@ -39,7 +39,7 @@ In this example, we will extract 10-minute hourly average data for a flow meter 
 
 #### Example 2:
 In this example we will calculate maximum monthly peak demand.
-`PI_Call_Tag(1/1/2019, 1/1/2020, 10m, 'P1-FIC-11-024/PV.CV', 'P1-kW-Max', summaryType='maximum')`
+`PI_Call_Tag(1/1/2019, 1/1/2020, 10m, 'P1-kW-11/PV.CV', 'P1-kW-Max', summaryType='maximum')`
     
 #### Example 3: 
 `PI_Call_Tag(1/1/2019, 1/1/2020, 10m, 'P1-FIC-11-024/PV.CV', 'P1-kW-Max', summaryType='maximum')`
