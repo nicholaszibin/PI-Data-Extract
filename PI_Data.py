@@ -149,7 +149,10 @@ def PI_Call(start, end, interval, csvFile, dataType='summary', summaryType='aver
         data = pd.concat(data, axis=1)    
         data = data.tz_convert('Canada/Pacific').tz_localize(None) #Have to convert to timezone
         if dataType == 'sampled':
+            data = pd.DataFrame(data)
+            data = data.tz_convert('Canada/Pacific').tz_localize(None)
             data = data.replace({'RUNNING': 1, 'STOPPED': 0, 'FAIL': 0})
+            data = data.rename(columns = {query: var_name})
             data = data.drop(data.tail(1).index)
         data = data.apply(pd.to_numeric, errors='coerce') #converts any errors to NaN
         data = data.replace('[-11059] No Good Data For Calculation', np.nan)
@@ -187,9 +190,11 @@ def PI_Call_Tag(start, end, interval, query, var_name, dataType='summary', summa
         else:
             print('ERROR: Data type not valid.')
             return
-        
         if dataType == 'sampled':
+            data = pd.DataFrame(data)
+            data = data.tz_convert('Canada/Pacific').tz_localize(None)
             data = data.replace({'RUNNING': 1, 'STOPPED': 0, 'FAIL': 0})
+            data = data.rename(columns = {query: var_name})
             data = data.drop(data.tail(1).index)
         data = data.apply(pd.to_numeric, errors='coerce') #converts any errors to NaN
         data = data.replace('[-11059] No Good Data For Calculation', np.nan)
@@ -197,6 +202,8 @@ def PI_Call_Tag(start, end, interval, query, var_name, dataType='summary', summa
 
     return data
 
+
+df = PI_Call_Tag('2022-08-01 00:00:00', '2022-09-01 00:00:00', '5m', 'SSPP-P-200/RUN.CV', 'P200_ON', dataType='sampled')
 
 #Test below
 #t20 = PI_Call('8/21/2020  7:30:00', '8/21/2020  11:47:00', '60s', 'Cape_Horn_tags.csv')
